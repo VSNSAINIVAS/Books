@@ -12,6 +12,7 @@ Steps to follow to spawn the containers locally and perform CRUD operations on t
 6) Apply the mysql deployment using ```kubectl create -f mysql.yaml```.
 7) After creating the deployment login to mysql pod using ```kubectl exec -it <pod_id> -- bash```.
 8) Login to mysql using ```mysql -u<User_name> -p<Password>```.
+9) Use database books using ```use books;```
    Create a table using commands
    ```
    CREATE TABLE IF NOT EXISTS book ( 
@@ -22,5 +23,5 @@ Steps to follow to spawn the containers locally and perform CRUD operations on t
     book_abstract TEXT 
     );
    ```
-9) Apply the spring-boot deployment using ```kubectl create -f springboot.yaml```.
-10) Get the url of the spring-boot service using ```minikube service <service_name> --url```.
+10) Apply the spring-boot deployment using ```kubectl create -f springboot.yaml```.
+11) Get the url of the spring-boot service using ```minikube service <service_name> --url```.
