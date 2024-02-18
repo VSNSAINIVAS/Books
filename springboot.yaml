@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: books-springboot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: books-springboot
+  template:
+    metadata:
+      labels:
+        app: books-springboot
+    spec:
+      containers:
+        - name: springboot
+          image: vsnsainivas2003/tasks-springboot:v1
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://books-mysql-service:3306/books?useSSL=false&allowPublicKeyRetrieval=true"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: zeta
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: zeta1234
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: springboot-config
+                  key: SPRING_DATASOURCE_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: springboot-config
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-secrets
+                  key: SPRING_DATASOURCE_PASSWORD
+          ports:
+            - containerPort: 9000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: books-springboot-service
+spec:
+  selector:
+    app: books-springboot
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+      nodePort: 30030
+  type: NodePort

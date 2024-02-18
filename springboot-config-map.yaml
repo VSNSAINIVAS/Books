@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: springboot-config
+data:
+  SPRING_DATASOURCE_URL: jdbc:mysql://books-mysql-service:3306/books?useSSL=false&allowPublicKeyRetrieval=true
+  SPRING_DATASOURCE_USERNAME: zeta
