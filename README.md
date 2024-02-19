@@ -3,6 +3,9 @@ Developed a basic spring boot application and pushed the images to the docker re
 
 Steps to follow to spawn the containers locally and perform CRUD operations on the book table of the Books database.
 
+## Note:
+### Make sure you modify the version of the image which is being pulled based on the architecture of the system. If you are using ARM architecture use tag (v1) and if you are using AMD architecture use tag (v2).
+
 ## Steps
 1) Clone the git repository using ```git clone https://github.com/VSNSAINIVAS/Books.git```.
 2) Make sure minikube and kubectl are installed by using commands ```minikube version``` & ```kubectl version```.
