@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql:latest
+          image: vsnsainivas2003/tasks-mysql:latest
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
