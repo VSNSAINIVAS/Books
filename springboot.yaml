@@ -17,13 +17,6 @@ spec:
           image: vsnsainivas2003/tasks-springboot:v1
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:mysql://books-mysql-service:3306/books?useSSL=false&allowPublicKeyRetrieval=true"
-            - name: SPRING_DATASOURCE_USERNAME
-              value: zeta
-            - name: SPRING_DATASOURCE_PASSWORD
-              value: zeta1234
-          env:
-            - name: SPRING_DATASOURCE_URL
               valueFrom:
                 configMapKeyRef:
                   name: springboot-config
