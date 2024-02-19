@@ -17,3 +17,5 @@ Steps to follow to create the containers locally and perform CRUD operations on 
 8) Apply the mysql deployment using ```kubectl create -f mysql.yaml```.
 9) Apply the spring-boot deployment using ```kubectl create -f springboot.yaml```.
 10) Get the url of the spring-boot service using ```minikube service <service_name> --url```.
+11) Copy the url and this is needed for testing.
+12) Use this documentation to perform CRUD operations locally https://documenter.getpostman.com/view/32443384/2sA2r82jLB#313efa48-0a5e-4a58-be14-984d4c464e0a. (Make sure to replace the first url part from http://127.0.0.1/<port number> with the url of service which you obtained in above step.)
