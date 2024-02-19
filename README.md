@@ -9,19 +9,8 @@ Steps to follow to spawn the containers locally and perform CRUD operations on t
 3) Start the minikube by using ```minikube start --driver=<driver_name>``` (Driver name should be replaced by the name of the driver examples: docker, hyperv etc.)
 4) Replace **MYSQL_ROOT_PASSWORD**, **MYSQL_PASSWORD** values in mysql-secret with base64 encoded value of the original value.
 5) Replace **SPRING_DATASOURCE_PASSWORD** valuues in springboot-secret with base64 encoded value of the original value.
-6) Apply the mysql deployment using ```kubectl create -f mysql.yaml```.
-7) After creating the deployment login to mysql pod using ```kubectl exec -it <pod_id> -- bash```.
-8) Login to mysql using ```mysql -u<User_name> -p<Password>```.
-9) Use database books using ```use books;```
-   Create a table using commands
-   ```
-   CREATE TABLE IF NOT EXISTS book ( 
-    book_id INT AUTO_INCREMENT PRIMARY KEY, 
-    book_title VARCHAR(255), 
-    book_author VARCHAR(255), 
-    bookisbn VARCHAR(255), 
-    book_abstract TEXT 
-    );
-   ```
-10) Apply the spring-boot deployment using ```kubectl create -f springboot.yaml```.
-11) Get the url of the spring-boot service using ```minikube service <service_name> --url```.
+6) Apply configmaps for mysql and secrets for it using the commands ```kubectl create -f mysql-config-map.yaml``` && ```kubectl create -f mysql-secret.yaml```
+7) Apply configmaps for springboot and secrets for it using the command ```kubectl create -f springboot-config-map.yaml``` && ```kubectl create -f springboot-secret.yaml```
+8) Apply the mysql deployment using ```kubectl create -f mysql.yaml```.
+9) Apply the spring-boot deployment using ```kubectl create -f springboot.yaml```.
+10) Get the url of the spring-boot service using ```minikube service <service_name> --url```.
