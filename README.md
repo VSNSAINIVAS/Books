@@ -6,7 +6,7 @@ Steps to follow to create the containers locally and perform CRUD operations on 
 ## Note:
 ### Make sure you modify the version of the image which is being pulled based on the architecture of the system. If you are using ARM architecture use tag (v1) and if you are using AMD architecture use tag (v2).
 
-## Steps
+## Steps (Without Helm)
 1) Clone the git repository using ```git clone https://github.com/VSNSAINIVAS/Books.git```.
 2) Make sure minikube and kubectl are installed by using commands ```minikube version``` & ```kubectl version```.
 3) Start the minikube by using ```minikube start --driver=<driver_name>``` (Driver name should be replaced by the name of the driver examples: docker, hyperv etc.)
@@ -19,3 +19,7 @@ Steps to follow to create the containers locally and perform CRUD operations on 
 10) Get the url of the spring-boot service using ```minikube service <service_name> --url```.
 11) Copy the url and this is needed for testing.
 12) Use this documentation to perform CRUD operations locally https://documenter.getpostman.com/view/32443384/2sA2r82jLB#313efa48-0a5e-4a58-be14-984d4c464e0a. (Make sure to replace the first url part from http://127.0.0.1/<port number> with the url of service which you obtained in above step.)
+
+## Steps (With Helm)
+1) Make sure you add the helm repo with the command ```helm repo add books-springboot https://vsnsainivas.github.io/springboot-books-helm```.
+2) Then install the helm chart using ```helm install books-springboot/springboot```.
